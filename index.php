@@ -37,44 +37,49 @@ pink{
 <br>
 <br>
 <form method="post" action="">
-	<label>startkapitaal</label>
+	<label>fruitsoort</label>
 	<input type="text" name="nummer">
-<br>
-	<label>rentepercentage</label>
-	<input type="text" name="nummer2">
-<br>
-	<label>jaarlijkse opname</label>
-	<input type="text" name="nummer3">
 <br>
 <!-- 	<input type="radio" name="reken" value="red"> <red>red</red>
 	<input type="radio" name="reken" value="green"> <green>green</green>
 	<input type="radio" name="reken" value="blue"> <blue>blue</blue>
 	<input type="radio" name="reken" value="pink"> <pink>pink</pink> -->
 <!-- <br>
-
+	<label>Korting %</label>
+	<input type="text" name="nummer2">
 <br>-->
 	<input type="submit" name="verzenden" value="bereken">
 	<input type="submit" name="clear" value="clear">
+<hr>
+	<input type="submit" name="sort" value="sorteren">
+	<input type="submit" name="random" value="schudden">
 </form>
 <?php
 session_start();
 if(isset($_POST['clear'])){
 	unset($_SESSION['getallen']);
 }
+
 if(isset($_POST['verzenden'])){
 $num = filter_input(INPUT_POST, "nummer");
-$num2 = filter_input(INPUT_POST, "nummer2");
-$num3 = filter_input(INPUT_POST, "nummer3");
+// $num2 = filter_input(INPUT_POST, "nummer2");
 // $rek = filter_input(INPUT_POST, "reken");
-$rentesom = (0.01 * $num2) + 1;
-$vollebedrag = $num * $rentesom;
-$jaren = $vollebedrag / $num3;
-if ($jaren < 100){
-	$jaar = $jaren;
-} else if ($jaren >= 100){
-	$jaar = "levenslang";
+
+if (isset($_SESSION['getallen'])) {
+	array_push($_SESSION['getallen'], $num);
+} else {
+	$_SESSION['getallen'] = array();
+	array_push($_SESSION['getallen'], $num);
 }
-echo "u kunt $jaar jaar lang € $num3 opnemen";
+
+if(isset($_POST['sort'])){
+	ksort($_SESSION['getallen']);
+}
+if(isset($_POST['random'])){
+	shuffle($_SESSION['getallen']);
+}
+echo "laatst ingevoerd: $num <BR>";
+print_r($_SESSION["getallen"]);
 }
 ?>
 </div>
