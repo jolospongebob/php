@@ -19,3 +19,11 @@
 <a href="../hoofdstuk6/6.6.5.php">opdracht 6.6.5</a>
 <a href="../hoofdstuk6/6.6.6.php">opdracht 6.6.6</a>
 <a href="../hoofdstuk6/6.6.7.php">opdracht 6.6.7</a>
+<br>
+<p>Hoofdstuk 7</p>
+<a href="../hoofdstuk7/7.6.1.php">opdracht 7.6.1</a>
+<a href="../hoofdstuk7/7.6.2.php">opdracht 7.6.2</a>
+<a href="../hoofdstuk7/7.6.3.php">opdracht 7.6.3</a>
+<a href="../hoofdstuk7/7.6.4.php">opdracht 7.6.4</a>
+<a href="../hoofdstuk7/7.6.6.php">opdracht 7.6.6</a>
+<a href="../hoofdstuk7/7.6.7.php">opdracht 7.6.7</a>
