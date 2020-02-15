@@ -40,7 +40,8 @@ $MenuInUitloggen = ''; // default menuknop inloggen
 <ul id="menu">
 	<li><a href="index.php?Pagina=1">Home</a></li>
 	<li><a href="index.php?Pagina=2">Reserveren</a></li>
-	<li><a href="index.php?Pagina=3">Verwacht</a></li>
-	<li><a href="index.php?Pagina=4">Over ons</a></li>
-	<li><a href="index.php?Pagina=5">Inloggen</a></li>
+	<li><a href="index.php?Pagina=3">In bios</a></li>
+	<li><a href="index.php?Pagina=4">Verwacht</a></li>
+	<li><a href="index.php?Pagina=5">Over ons</a></li>
+	<li><a href="index.php?Pagina=6">Inloggen</a></li>
 </ul>

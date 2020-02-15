@@ -54,3 +54,4 @@ else
 	RedirectNaarPagina(NULL,98);//instant redirect naar inlogpagina
 }
 ?>
+data tijden

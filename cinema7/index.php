@@ -7,16 +7,7 @@ require('./Modules/Functies.php');
 	Opdracht PM04 STAP 2: Verwacht in de bioscoop
 	Omschrijving: Roep de functie ConnectDB aan en stop het resultaat in de variabele $pdo
 */
-$dpo= ConnectDB();
-// $dpor= $dpo->query("SELECT * FROM `films`");
-// foreach ($dpor as $row) {
-// 	echo $row['Titel'];
-// 	echo "<BR>";
-// }
-/*
-	Opdracht PM03 STAP 2: Bioscoop Modulair
-	Omschrijving: Lees de variabele pagina in middels de GET methode
-*/
+$pdo= ConnectDB();
 
 
 
@@ -53,13 +44,19 @@ case '2':
 	require 'Modules/Reserveren.php';
 	break;
 case '3':
-	require 'Modules/Verwacht.php';
+	require 'Modules/Inbios.php';
 	break;
 case '4':
-	require 'Modules/OverOns.php';
+	require 'Modules/Verwacht.php';
 	break;
 case '5':
+	require 'Modules/OverOns.php';
+	break;
+case '6':
 	require 'Modules/Inloggen.php';
+	break;
+case '7':
+	require 'Modules/Data.Tijden.php';
 	break;
 default:
 	require 'Modules/index.php';
