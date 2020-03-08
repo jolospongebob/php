@@ -33,7 +33,7 @@ function RedirectNaarPagina($Seconds = NULL,$PaginaNr = NULL)
 		header($Refresh . "index.php");
 	}
 	else
-		header($Refresh . "index.php?PaginaNr=".$PaginaNr);
+		header($Refresh . "index.php?Pagina=".$PaginaNr);
 }
 
 /** De functie LoginCheck
@@ -41,9 +41,10 @@ function RedirectNaarPagina($Seconds = NULL,$PaginaNr = NULL)
   */
 function LoginCheck($pdo) 
 {
-    // Controleren of Sessie variabelen bestaan
-    if (isset($_SESSION['user_id'], $_SESSION['username'],$_SESSION['login_string'])) 
-	{
+  // Controleren of Sessie variabelen bestaan
+  echo "<script>console.log('test 1')</script>";  
+  if (isset($_SESSION['user_id'], $_SESSION['username'],$_SESSION['login_string'])) 
+    {
         $KlantID = $_SESSION['user_id'];
         $Login_String = $_SESSION['login_string'];
         $Username = $_SESSION['username'];
@@ -51,29 +52,44 @@ function LoginCheck($pdo)
         // Get the user-agent string of the user.
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
  
-		$parameters = array(':KlantID'=>$KlantID);
-		$sth = $pdo->prepare('SELECT Wachtwoord FROM klanten WHERE KlantID = :KlantID LIMIT 1');
+        $parameters = array(':KlantID'=>$KlantID);
+        $sth = $pdo->prepare('SELECT * FROM klanten WHERE KlantID = :KlantID LIMIT 1');
  
-       	$sth->execute($parameters);
+    $sth->execute($parameters);
 
-		// controleren of de klant voorkomt in de DB
-		if ($sth->rowCount() == 1) 
-		{
-			// Variabelen inlezen uit query
-			$row = $sth->fetch();
+    // controleren of de klant voorkomt in de DB
+        echo "<script>console.log('test 2')</script>"; 
+        echo "klant id".$KlantID;
+        if ($sth->rowCount() == 1) 
+        {
+            // Variabelen inlezen uit query
+            $row = $sth->fetch();
 
-			//check maken
-		    $Login_Check = hash('sha512', $row['Wachtwoord'] . $user_browser);
- 
-				//controleren of check overeenkomt met sessie
-                if ($Login_Check == $Login_String)
-					return true;
-                else 
+            //check maken
+            $Login_Check = hash('sha512', $row['Wachtwoord'] . $user_browser);
+        //controleren of check overeenkomt met sessie
+            echo "<script>console.log('test 3')</script>";  
+                if ($Login_Check == $Login_String) {
+                  $parameters = array("Username"=>$Username);
+                  $sth = $pdo->prepare("SELECT Level, Inlognaam FROM klanten WHERE Inlognaam = :Username");
+
+                  $sth->execute($parameters);
+                  $row = $sth->fetch();
+                  
+                  $_SESSION["level"] = $row["Level"];   
+
+                  echo "<script>console.log('true (ingelogd)')</script>";
+                  return true;
+                }
+                else {
                    return false;
-         } else 
-              return false;         
-     } else 
+                }
+         } else {
+              return false;
+         }         
+     } else {
           return false;
+     }
 }
 
 /* Functies voor validatie van Form Fields */

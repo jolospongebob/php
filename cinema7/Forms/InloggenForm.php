@@ -1,5 +1,11 @@
-<!--
-	Opdracht PM07 STAP 1: Inlogsysteem
-	Omschrijving: Maak het formulier met 2 velden en de link naar de pagina registreren in html code
--->
-inloggen
+<?php
+echo "<form method='post'>";
+echo "<label for='username'>"."Gebruikersnaam: "."</label>";
+echo "<input type='text' name='username' required='required' />"."<BR>";
+echo "<label for='password'>"."Wachtwoord: "."</label>";
+echo "<input type='password' name='password' required='required' />"."<BR>";
+echo "<input type='submit' value='Versturen' name='Inloggen' />";
+echo "</form>";
+
+
+?>

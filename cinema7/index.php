@@ -59,7 +59,7 @@ case '7':
 	require 'Modules/Data.Tijden.php';
 	break;
 default:
-	require 'Modules/index.php';
+	require 'Modules/Home.php';
 	break;
 		};
 		}

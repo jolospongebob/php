@@ -4,16 +4,22 @@
 	Omschrijving: Zet het default level op 0 en vul de variabale MenuInUitloggen met de default html code voor de knop inloggen
 */
 
-$Level = ''; // default level 0
+$Level = '0'; // default level 0
 
-$MenuInUitloggen = ''; // default menuknop inloggen
+$MenuInUitloggen = '<li><a href="./index.php?paginaNr=97">Inloggen</a></li>'; // default menuknop inloggen
 
 /*  
 	Opdracht PM09 STAP 2: menu op basis van gebruikers levels 
 	Omschrijving: Controleer mbv de functie LoginCheck of iemand is ingelogd. Zo ja, dan overschrijf je de default waardes van Level en MenuInUitloggen met het level uit de database en de html code voor de knop uitloggen
 */
 
+// $pdo = ConnectDB();
 
+if(LoginCheck($pdo) == true) {
+	$Level = $_SESSIONS["level"];
+	$MenuInUitloggen = '<li><a href="./index.php?paginaNr=98">uitloggen</a></li>';
+
+}
 
 
 /*  
